@@ -1,0 +1,32 @@
+@import '../../styles/mixins';
+@import '../../styles/colors';
+
+.dark {
+	.text-input {
+		@include bg-dark;
+
+		&__label {
+			display: block;
+		}
+
+		&__input {
+			@include bg-dark;
+
+			width: 100%;
+			outline: none;
+			border: none;
+
+			padding: 10px;
+			height: 40px;
+
+			&::placeholder {
+				@include bg-dark;
+			}
+		}
+	}
+}
+
+.light {
+	.text-input {
+	}
+}

@@ -1,10 +1,13 @@
 import { json, urlencoded } from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import { createServer as baseServer } from 'http';
 import morgan from 'morgan';
 
 export const createServer = () => {
 	const app = express();
+
+	const server = baseServer(app);
 
 	app.disable('x-powered-by')
 		.use(morgan('dev'))
@@ -15,5 +18,5 @@ export const createServer = () => {
 			return res.json({ ok: true });
 		});
 
-	return app;
+	return { server, app };
 };
