@@ -1,70 +1,68 @@
-# Turborepo Docker starter
+<div align="center">
 
-This is an official Docker starter Turborepo.
+  <img src="./assets/zaapbot.png" height=150 />
 
-## Using this example
+  <h1>Zaapbot</h1>
 
-Run the following command:
+</div>
 
-```sh
-npx create-turbo@latest -e with-docker
+### Note
+
+-   Zaapbot is in early development, so all APIs are subject to change.
+-   This code is unaudited. Use at your own risk.
+-   All contributions are welcome.
+
+# Table of contents:
+
+-   [Table of contents:](#table-of-contents)
+    -   [Developing Locally](#developing-locally)
+        -   [Prerequisites](#prerequisites)
+        -   [Pull the code](#pull-the-code)
+        -   [Install dependencies](#install-dependencies)
+        -   [Setup local environment](#setup-local-environment)
+        -   [Start required module](#start-required-module)
+    -   [License](#license)
+
+## Developing Locally
+
+_Setup video goes here_
+
+### Prerequisites
+
+-   node ^18.0.0
+-   yarn ^3.6.3
+
+### Pull the code
+
+```bash
+git clone git@github.com:EpsilonProtocol/zaapbot.git
+cd zaapbot
 ```
 
-## What's inside?
+### Install dependencies
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes the following packages/apps:
+run `yarn install` in the monorepo root folder
 
-### Apps and Packages
+### Setup local environment
 
--   `web`: a [Next.js](https://nextjs.org/) app
--   `api`: an [Express](https://expressjs.com/) server
--   `ui`: ui: a React component library
--   `eslint-config-custom`: `eslint` configurations for client side applications (includes `eslint-config-next` and `eslint-config-prettier`)
--   `eslint-config-server`: `eslint` configurations for server side applications (includes `eslint-config-next` and `eslint-config-prettier`)
--   `scripts`: Jest configurations
--   `logger`: Isomorphic logger (a small wrapper around console.log)
--   `tsconfig`: tsconfig.json;s used throughout the monorepo
+Clone the `.env.example` file to `.env` and set your own environment variables
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Start required module
 
-### Docker
+You can start the module using `yarn dev --filter {module_name}`.
 
-This repo is configured to be built with Docker, and Docker compose. To build all apps in this repo:
+Starting the api
 
-```
-# Create a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
-docker network create app_network
-
-# Build prod using new BuildKit engine
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yml build
-
-# Start prod in detached mode
-docker-compose -f docker-compose.yml up -d
+```bash
+yarn dev --filter api
 ```
 
-Open http://localhost:3000.
+Starting the web
 
-To shutdown all running containers:
-
-```
-# Stop all running containers
-docker kill $(docker ps -q) && docker rm $(docker ps -a -q)
+```bash
+yarn dev --filter web
 ```
 
-### Remote Caching
+## License
 
-This example includes optional remote caching. In the Dockerfiles of the apps, uncomment the build arguments for `TURBO_TEAM` and `TURBO_TOKEN`. Then, pass these build arguments to your Docker build.
-
-You can test this behavior using a command like:
-
-`docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM=“your-team-name” --build-arg TURBO_TOKEN=“your-token“ --no-cache`
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
--   [TypeScript](https://www.typescriptlang.org/) for static type checking
--   [ESLint](https://eslint.org/) for code linting
--   [Jest](https://jestjs.io) test runner for all things JavaScript
--   [Prettier](https://prettier.io) for code formatting
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion by you shall be licensed at the discretion of the repository maintainers without any additional terms or conditions.
