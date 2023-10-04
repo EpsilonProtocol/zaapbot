@@ -17,6 +17,7 @@ build
 # other
 dist/
 .env*
+!.env.example
 
 # misc
 .DS_Store
