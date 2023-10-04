@@ -1,4 +1,3 @@
-import { log } from 'logger';
 import { mainRouter } from './routes';
 import { createServer } from './server';
 import { initSockets } from './socket';
@@ -11,5 +10,5 @@ app.use(mainRouter);
 initSockets(server);
 
 server.listen(port, () => {
-	log(`api running on ${port}`);
+	console.log(`api running on ${port}`);
 });
