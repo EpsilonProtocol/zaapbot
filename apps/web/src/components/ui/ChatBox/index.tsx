@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Socket, io } from 'socket.io-client';
 
 import ChatBoxComponent, { ChatMessage, SendMessageHandler } from 'ui/src/components/ChatBoxComponent';
-import { CHAT_SOCKET_URL } from '../../../config/env';
+import { NEXT_PUBLIC_CHAT_SOCKET_URL } from '../../../config/env';
 
 export default function ChatBox() {
 	const [socket, setSocket] = useState<Socket | undefined>();
@@ -37,7 +37,7 @@ export default function ChatBox() {
 	}, [socket]);
 
 	useEffect(() => {
-		setSocket(io(CHAT_SOCKET_URL));
+		setSocket(io(NEXT_PUBLIC_CHAT_SOCKET_URL));
 	}, []);
 
 	return <ChatBoxComponent handleSendMessage={handleSendMessage} messages={messages} />;
