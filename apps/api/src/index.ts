@@ -1,14 +1,21 @@
-import { mainRouter } from './routes';
+import { establishConnection } from 'core';
+import mainRouter from './routes';
 import { createServer } from './server';
 import { initSockets } from './socket';
 
 const port = process.env.PORT || 8080;
 const { server, app } = createServer();
 
-app.use(mainRouter);
+const main = async () => {
+	await establishConnection();
 
-initSockets(server);
+	app.use(mainRouter);
 
-server.listen(port, () => {
-	console.log(`api running on ${port}`);
-});
+	initSockets(server);
+
+	server.listen(port, () => {
+		console.log(`api running on ${port}`);
+	});
+};
+
+main().catch((err) => console.log(err));

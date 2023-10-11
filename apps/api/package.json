@@ -16,8 +16,11 @@
 	"dependencies": {
 		"body-parser": "^1.19.0",
 		"cors": "^2.8.5",
+		"ethers": "^5.0.0",
 		"express": "^4.17.1",
+		"jsonwebtoken": "^9.0.2",
 		"morgan": "^1.10.0",
+		"core":"*",
 		"socket.io": "^4.7.2"
 	},
 	"devDependencies": {
@@ -25,6 +28,7 @@
 		"@types/cors": "^2.8.10",
 		"@types/express": "^4.17.12",
 		"@types/jest": "^26.0.22",
+		"@types/jsonwebtoken": "^9.0.3",
 		"@types/morgan": "^1.9.2",
 		"@types/node": "^15.12.2",
 		"@types/supertest": "^2.0.11",
